@@ -1,6 +1,18 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>主页</h1>
+    <div class="jumbotron">
+        <h1>Hello Laravel</h1>
+        <p class="lead">
+            What you see is what you want - 你看到的就是你想象到的
+        </p>
+        <p>
+            begin start - 开始吧。
+        </p>
+        <p>
+            <a href="#" class="btn btn-lg btn-success" role="button">现在注册</a>
+        </p>
+    </div>
 
 @stop
+
