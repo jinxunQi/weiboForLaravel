@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
+/**
+ * 静态页面控制器
+ * Class StaticPagesController
+ * @package App\Http\Controllers
+ */
 class StaticPagesController extends Controller
 {
     /**
