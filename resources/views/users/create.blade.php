@@ -11,6 +11,8 @@
             <div class="card-body">
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.store') }}">
+{{--                        <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">名称：</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}">
