@@ -3,6 +3,7 @@
 <head>
     <title>@yield('title', 'Weibo App') - laravel 入土为安</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
 @include('layouts._header')
