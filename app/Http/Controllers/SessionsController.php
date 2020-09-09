@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * 用户会话控制器(登录、退出)
+ * Class SessionsController
+ * @package App\Http\Controllers
+ */
 class SessionsController extends Controller
 {
 
@@ -33,17 +38,19 @@ class SessionsController extends Controller
 
         if (Auth::attempt($credentials)) {
             //登录成功
-//            dd('success');
             session()->flash('success', '欢迎回来！');
             return redirect()->route('users.show', [Auth::user()]);
         } else {
-//            dd('danger');
             //登录失败
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back()->withInput();
         }
     }
 
+    /**
+     * 退出登录
+     * @param Request $request
+     */
     public function destroy(Request $request)
     {
 

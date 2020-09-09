@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * 用户控制器
@@ -63,6 +64,7 @@ class UsersController extends Controller
         ]);*/
 
         //保存成功后的通知消息 session的flash
+        Auth::login($user);//注册成功自动登录
         session()->flash('success', '注册成功，欢迎您在这里进行一段愉快的行程~');
         return redirect(route('users.show', [$user]));
     }
