@@ -68,4 +68,15 @@ class UsersController extends Controller
         session()->flash('success', '注册成功，欢迎您在这里进行一段愉快的行程~');
         return redirect(route('users.show', [$user]));
     }
+
+
+    /**
+     * 编辑用户展示页
+     * @param User $user
+     * @return mixed
+     */
+    public function edit(User $user)
+    {
+        return view('users.edit', compact($user));
+    }
 }

@@ -18,6 +18,9 @@ Route::get('/signup', 'UsersController@create')->name('signup');
 Route::resource('users', 'UsersController');
 //Route::get('/users/{user}', 'UsersController@show')->name('users.show');
 
+//登录、退出会话
 Route::get('/login', 'SessionsController@create')->name('login');
 Route::post('/login', 'SessionsController@store')->name('login');
 Route::delete('/logout', 'SessionsController@destroy')->name('logout');
+
+Route::get('/users/{id}/edit', 'UsersController@edit')->name('users.edit');//其实在上面的resource资源路由已经包含了
