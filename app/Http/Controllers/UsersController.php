@@ -17,7 +17,7 @@ class UsersController extends Controller
     {
         //中间件过滤未登录用户请求
         $this->middleware('auth', [
-            'except' => ['create', 'store', 'show']
+            'except' => ['create', 'store', 'show', 'index']
         ]);
 
         //只让未注册的用户访问注册页
@@ -131,5 +131,20 @@ class UsersController extends Controller
 
         session()->flash('success', '个人资料更新成功！');
         return redirect()->route('users.show', $user);
+    }
+
+
+    /**
+     * 删除用户
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy(User $user)
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
     }
 }
