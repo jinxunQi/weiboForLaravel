@@ -26,6 +26,16 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * 列出所有用户列表
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
+
 
     /**
      * 用户注册页展示
