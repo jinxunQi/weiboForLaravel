@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Auth;
  */
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        //中间件过滤未登录用户请求
+        $this->middleware('auth', [
+            'except' => ['create', 'store', 'show']
+        ]);
+
+        //只让未注册的用户访问注册页
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
+
     /**
      * 用户注册页展示
      * @return mixed \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -73,10 +87,12 @@ class UsersController extends Controller
     /**
      * 编辑用户展示页
      * @param User $user
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -90,6 +106,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6'

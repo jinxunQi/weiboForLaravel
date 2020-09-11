@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -12,6 +13,14 @@ use Illuminate\Support\Facades\Auth;
  */
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        //中间件，把create登录页面暴露给访客guest
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
 
     /**
      * 登陆用户展示页面
@@ -39,7 +48,8 @@ class SessionsController extends Controller
         if (Auth::attempt($credentials, $request->has('remember'))) {
             //登录成功
             session()->flash('success', '欢迎回来！');
-            return redirect()->route('users.show', [Auth::user()]);
+            $fallback = route('users.show', [Auth::user()]);
+            return redirect()->intended($fallback);
         } else {
             //登录失败
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
