@@ -131,6 +131,7 @@ class UsersController extends Controller
 
         session()->flash('success', '个人资料更新成功！');
         return redirect()->route('users.show', $user);
+
     }
 
 
