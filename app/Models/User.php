@@ -67,5 +67,12 @@ class User extends Authenticatable
         });
     }
 
-
+    /**
+     * 获取用户所属的博客(一对多)
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function statuses()
+    {
+        return $this->hasMany(Status::class, 'user_id', 'id');
+    }
 }
