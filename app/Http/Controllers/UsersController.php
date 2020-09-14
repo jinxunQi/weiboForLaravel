@@ -162,8 +162,8 @@ class UsersController extends Controller
     {
         $view = 'emails.confirm';
         $data = compact('user');
-        $from = '574765035@qq.com';
-        $name = 'admin';
+        $from = '574765035@qq.com';//可以在配置文件中配置，不用写
+        $name = 'admin';//可以在配置文件中配置，不用写
         $to = $user->email;
         $subject = '感谢注册 Weibo 应用！请确认你的邮箱。';
         Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
