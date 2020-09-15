@@ -7,12 +7,15 @@
                 <section class="status_form">
                     @include('statuses._status_form')
                 </section>
+                <h4>微博列表</h4>
+                <hr>
+                @include('shared._feed')
             </div>
-            <div class="col-md-4">
+            <aside class="col-md-4">
                 <section class="user_info">
                     @include('users._user_info', ['user' => Auth::user()])
                 </section>
-            </div>
+            </aside>
         </div>
     @else
         <div class="jumbotron">

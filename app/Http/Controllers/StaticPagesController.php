@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * 静态页面控制器
@@ -16,7 +17,15 @@ class StaticPagesController extends Controller
      */
     public function home()
     {
-        return view('static_pages/home');
+        //博客列表
+        $feed_items = [];
+
+        if (Auth::check()) {
+            //获取当前用户的博客列表
+            $feed_items = Auth::user()->feed()->paginate(10);
+        }
+
+        return view('static_pages/home', ['feed_items' => $feed_items]);
     }
 
     /**
