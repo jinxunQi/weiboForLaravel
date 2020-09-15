@@ -7,7 +7,8 @@
                 <section class="status_form">
                     @include('statuses._status_form')
                 </section>
-                <h4>微博列表</h4>
+{{--                <h4>微博列表</h4>--}}
+                <h4>留言列表(yours)</h4>
                 <hr>
                 @include('shared._feed')
             </div>
@@ -24,7 +25,7 @@
                 What you see is what you want - 你看到的就是你想象到的
             </p>
             <p>
-                begin start - 开始吧。
+                begin start - 开始吧。注册登录后可以使用留言板功能！
             </p>
             <p>
                 <a href="{{ route('signup') }}" class="btn btn-lg btn-success" role="button">现在注册</a>

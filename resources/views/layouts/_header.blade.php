@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a href="{{ route('home') }}" class="navbar-brand">Weibo App</a>
+{{--        <a href="{{ route('home') }}" class="navbar-brand">Weibo App</a>--}}
+        <a href="{{ route('home') }}" class="navbar-brand">Message Board App</a>
         <ul class="navbar-nav justify-content-end">
             @if (Auth::check())
                 <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">用户列表</a></li>

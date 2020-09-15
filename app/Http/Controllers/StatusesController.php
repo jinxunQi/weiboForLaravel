@@ -39,9 +39,18 @@ class StatusesController extends Controller
         return redirect()->back();
     }
 
-
+    /**
+     * 删除博客
+     * @param Status $status
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy(Status $status)
     {
-
+        $this->authorize('destroy', $status);
+        $status->delete();
+//        session()->flash('success', '博客已被删除！');
+        session()->flash('success', '留言已被删除！');
+        return redirect()->back();
     }
 }
