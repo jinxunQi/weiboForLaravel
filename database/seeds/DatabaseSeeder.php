@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();//解除模型字段限制
 
         $this->call(UsersTableSeeder::class);
+        $this->call(StatusesTableSeeder::class);
 
         Model::reguard();//重新开启模型字段限制
     }

@@ -12,6 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        //创建一个User模型工厂(在factories中定义的)
         $users = factory(User::class)->times(50)->make();
 
         User::insert($users->makeVisible(['password', 'remember_token'])->toArray());
