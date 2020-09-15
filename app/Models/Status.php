@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
+    protected $fillable = ['content'];
 
     /**
      * 博客对应的用户数据 用户->博客 一对多
