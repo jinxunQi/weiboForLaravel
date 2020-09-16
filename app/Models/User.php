@@ -85,4 +85,22 @@ class User extends Authenticatable
         return $this->statuses()
             ->orderBy('created_at', 'desc');
     }
+
+    /**
+     * 获取用户粉丝列表(谁关注了你) 多对多
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    /**
+     * 用户关注列表 (你关注了谁)
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
 }
