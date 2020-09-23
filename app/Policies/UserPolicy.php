@@ -41,4 +41,17 @@ class UserPolicy
         //必须是管理员，并且要删除操作的用户不是自己
         return $currentUser->is_admin && $currentUser->id !== $user->id;
     }
+
+
+    /**
+     * 用户关注、授权策略
+     * 用户不能关注自己
+     * @param User $currentUser
+     * @param User $user
+     * @return mixed
+     */
+    public function follow(User $currentUser, User $user)
+    {
+        return $currentUser->id !== $user->id;
+    }
 }

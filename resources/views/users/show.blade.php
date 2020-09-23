@@ -10,6 +10,12 @@
             <section class="user_info">
                 @include('users._user_info', ['user' => $user])
             </section>
+            
+            {{--关注--}}   
+            @if (Auth::check())
+                @include('users._follow_form', ['user' => $user])
+            @endif
+            
             {{--统计--}}
             <section class="stats mt-2">
                 @include('shared._stats', ['user' => $user])
