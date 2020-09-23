@@ -8,7 +8,7 @@
                     @include('statuses._status_form')
                 </section>
 {{--                <h4>微博列表</h4>--}}
-                <h4>留言列表(yours)</h4>
+                <h4>留言列表(friends' And Yours')</h4>
                 <hr>
                 @include('shared._feed')
             </div>
